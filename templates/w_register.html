@@ -1,0 +1,65 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary p-5 hero-header mb-5">
+        <div class="row py-5">
+            <div class="col-12 text-center">
+                <h1 class="display-1 text-white animated zoomIn">Worker Registration</h1>
+             
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+                <h5 class="text-primary text-uppercase" style="letter-spacing: 5px;">Worker Register</h5>
+            </div>
+            <div class="row g-12">
+                <div class="col-lg-12 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="bg-light rounded p-5">
+                        <form action="addseller" method="post" enctype='multipart/form-data'>
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <input type="text" class="form-control border-0 px-4" placeholder="Your Name" name="name" required data-error="Please enter your name" style="height: 55px;">
+                                </div>
+                                <div class="col-6">
+                                    <input type="email" class="form-control border-0 px-4" placeholder="Your Email" name="email"  required data-error="Please enter your Email" style="height: 55px;">
+                                </div>
+                                <div class="col-6">
+                                    <input type="file" class="form-control border-0 px-4" placeholder="" name="file"  required data-error="Please enter your file" style="height: 55px;">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control border-0 px-4" pattern="[0-9]{10}" title="Enter 10 Digits" placeholder="Phone Number" name="phone"  required data-error="Please enter your Phone" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control border-0 px-4" placeholder="Password" name="password"  required data-error="Please enter your Password" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control border-0 px-4"  name="status" value="pending" hidden style="height: 55px;">
+                                </div>
+                                
+                                
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" name="submit" type="submit">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+      
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+{% include 'footer.html' %}
+
+{% endblock %}

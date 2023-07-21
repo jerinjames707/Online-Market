@@ -1,0 +1,39 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+<style>
+.a{
+ing
+
+}
+</style>
+ <!-- Contact Start -->
+ <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+      
+        <div class="row g-12">
+            <div class="col-lg-12 wow slideInUp" data-wow-delay="0.3s">
+                <div class="bg-light rounded p-5">
+                    <form action="u_feeback" method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <input type="text"  class="form-control border-0 px-4" placeholder="Feedback" name="feedback" required style="height: 55px;">
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">add Feedback</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+</div><br><br><br><br>
+<!-- Contact End -->
+
+{% include 'footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,273 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+<style>
+h2 {
+	color: #000;
+	font-size: 26px;
+	font-weight: 300;
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+	margin: 30px 0 60px;
+}
+h2::after {
+	content: "";
+	width: 100px;
+	position: absolute;
+	margin: 0 auto;
+	height: 4px;
+	border-radius: 1px;
+	background: #F14D5D;
+	left: 0;
+	right: 0;
+	bottom: -20px;
+}
+.carousel {
+	margin: 50px auto;
+	padding: 0 70px;
+}
+.carousel .item {
+	color: #747d89;
+	min-height: 325px;
+	text-align: center;
+	overflow: hidden;
+}
+.carousel .thumb-wrapper {
+	padding: 25px 15px;
+	background: #b6e3ed;
+	border-radius: 6px;
+	text-align: center;
+	position: relative;
+	box-shadow: 0 2px 3px rgba(.6,3,4,.5);
+}
+.carousel .item .img-box {
+	height: 120px;
+	margin-bottom: 20px;
+	width: 100%;
+	position: relative;
+}
+.carousel .item img {	
+	max-width: 100%;
+	max-height: 100%;
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+}
+.carousel .item h4 {
+	font-size: 18px;
+}
+.carousel .item h4, .carousel .item p, .carousel .item ul {
+	margin-bottom: 5px;
+}
+.carousel .thumb-content .btn {
+	color: #F14D5D;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: bold;
+	background: none;
+	border: 1px solid #F14D5D;
+	padding: 6px 14px;
+	margin-top: 5px;
+	line-height: 16px;
+	border-radius: 20px;
+}
+.carousel .thumb-content .btn:hover, .carousel .thumb-content .btn:focus {
+	color: #fff;
+	background: #F14D5D;
+	box-shadow: none;
+}
+.carousel .thumb-content .btn i {
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+.carousel .item-price {
+	font-size: 13px;
+	padding: 2px 0;
+}
+.carousel .item-price strike {
+	opacity: 0.7;
+	margin-right: 5px;
+}
+.carousel-control-prev, .carousel-control-next {
+	height: 44px;
+	width: 40px;
+	background: #F14D5D;	
+	margin: auto 0;
+	border-radius: 4px;
+	opacity: 0.8;
+}
+.carousel-control-prev:hover, .carousel-control-next:hover {
+	background: #F14D5D;
+	opacity: 1;
+}
+.carousel-control-prev i, .carousel-control-next i {
+	font-size: 36px;
+	position: absolute;
+	top: 50%;
+	display: inline-block;
+	margin: -19px 0 0 0;
+	z-index: 5;
+	left: 0;
+	right: 0;
+	color: #fff;
+	text-shadow: none;
+	font-weight: bold;
+}
+.carousel-control-prev i {
+	margin-left: -2px;
+}
+.carousel-control-next i {
+	margin-right: -4px;
+}		
+.carousel-indicators {
+	bottom: -50px;
+}
+.carousel-indicators li, .carousel-indicators li.active {
+	width: 10px;
+	height: 10px;
+	margin: 4px;
+	border-radius: 50%;
+	border: none;
+}
+.carousel-indicators li {	
+	background: rgba(0, 0, 0, 0.2);
+}
+.carousel-indicators li.active {	
+	background: rgba(0, 0, 0, 0.6);
+}
+.carousel .wish-icon {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 99;
+	cursor: pointer;
+	font-size: 16px;
+	color: #abb0b8;
+}
+.carousel .wish-icon .fa-heart {
+	color: #ff6161;
+}
+.star-rating li {
+	padding: 0;
+}
+.star-rating i {
+	font-size: 14px;
+	color: #ffc000;
+}
+</style>
+ <!-- Hero Start -->
+    <div class="container-fluid bg-primary p-5 hero-header mb-5">
+        <div class="row py-5">
+            <div class="col-12 text-center">
+                <h1 class="display-1 text-white animated zoomIn">My bid products</h1>
+             
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+<!-- Start Wishlist  -->
+<!--div class="wishlist-box-main">
+    <div class="container"><br>
+     
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Price </th>
+                                <th>Date</th>
+                                <th>Discription</th>
+                                <th>Image</th>
+                                <!--th>Seller id</th>
+                                <th>Confirm</th>
+                                <th>Cancel Booking</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              
+                                <td class="name-pr">{{i.item_name}}</td>
+                                <td class="price-pr">{{i.price}}</td>
+                                <td class="quantity-box">{{i.date}}</td>
+                                <td class="quantity-box">{{i.disc}}</td>
+                              <td class="quantity-box">
+  <img src="{{ i.file.url }}" alt="Image" width="200px">
+</td>
+                                <!--td class="quantity-box">{{i.seller_id}}</td>
+
+                                <td class="add-pr">
+                                    <a  href="confirm/{{i.id}}">Confirm Booking</a>
+                                </td>
+                                <td class="add-pr">
+                                    <a  href="reject/{{i.id}}">Reject Booking</a>
+                                </td>
+                              
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div-->
+ <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h2> <b>My bid products</b> </h2>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+			<!-- Wrapper for carousel items -->
+			<div class="carousel-inner">
+    <div class="item carousel-item active">
+        <div class="row">
+            {% for i in res %}
+       <div class="col-sm-3">
+    <div class="thumb-wrapper">
+        <div class="img-box">
+            <img src="media/{{i.file}}" alt="Image" width="200px">
+        </div>
+        <div class="thumb-content">
+            <h4>{{i.item_name}}</h4>
+            <div class="star-rating">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                </ul>
+            </div>
+            <p class=""><b><span id="price">₹{{i.price}}</span></b></p>
+            <p class="item-price">Discription:-:<span id="price">{{i.disc}}</span></p>
+          
+		<a href="buyaucpro/{{i.id}}" class="btn btn-info">Buy</a>
+        </div>
+    </div>
+</div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+			
+			<!-- Carousel controls -->
+			
+			
+		</div>
+		</div>
+	</div>
+</div>
+ <br><br><br><br>
+
+{% include 'footer.html' %}
+
+{% endblock %}

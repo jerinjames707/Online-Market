@@ -1,0 +1,81 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary p-5 hero-header mb-5">
+        <div class="row py-5">
+            <div class="col-12 text-center">
+                <h1 class="display-1 text-white animated zoomIn">Payment</h1>
+             
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!-- Contact Start -->
+   <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h5 class="text-primary text-uppercase" style="letter-spacing: 5px;">Payment</h5>
+        </div>
+        <div class="row g-12">
+            <div class="col-lg-12 wow slideInUp" data-wow-delay="0.3s">
+                <div class="bg-light rounded p-5">
+                    <form action="add_aucpayment/{{res.id}}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-12">
+                               item name <input type="text"  readonly class="form-control border-0 px-4"  name="item_name" value="{{res.item_name}}" required title="Please enter Item name" style="height: 55px;">
+                            <input type="text"  hidden class="form-control border-0 px-4"  name="item_id" value="{{res.id}}" required title="Please enter Item name" style="height: 55px;">
+                            <input type="text"  hidden class="form-control border-0 px-4"  name="seller_id" value="{{res.seller_id}}" required title="Please enter Item name" style="height: 55px;">
+                            </div>
+                          
+							  <div class="col-12">
+                               Last price <input type="text" readonly class="form-control border-0 px-4"  name="total_price" value="{{res.price}}" required title="Please enter your price" style="height: 55px;">
+                            </div>
+                            <div class="col-6">
+                                <input type="date" id="date_picker" class="form-control border-0 px-4" placeholder="Date" name="date" required  style="height: 55px;">
+                            </div>
+                            <script language="javascript">
+                                var today = new Date();
+                                var dd = String(today.getDate()).padStart(2, '0');
+                                var mm = String(today.getMonth() + 1).padStart(2, '0');
+                                var yyyy = today.getFullYear();
+
+                                today = yyyy + '-' + mm + '-' + dd;
+                                $('#date_picker').attr('min', today);
+                            </script>
+                            <div class="col-6">
+                                <input type="text" class="form-control border-0 px-4" title="" placeholder="card name" name="card_name"  required  style="height: 55px;">
+                            </div>
+							 <div class="col-6">
+                                <select type="text" class="form-control border-0 px-4" title="" placeholder="card type" name="card_type"  required  style="height: 55px;">
+								<option>select card type </option>
+								<option value="credit">credit</option>
+								<option value="debit">debit</option>
+								</select>
+                            </div>
+							 <div class="col-6">
+                                <input type="text" class="form-control border-0 px-4" title="" placeholder="card no" name="card_no"  required pattern="[0-9]{16}" title="please enter 16 digits"  style="height: 55px;">
+                            </div>
+							 <div class="col-6">
+                                <input type="text" class="form-control border-0 px-4" title="" placeholder="cvv" name="cvv"  required pattern="[0-9]{3}" title="please enter 3 digits" style="height: 55px;">
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" name="submit" type="submit">payment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

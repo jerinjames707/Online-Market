@@ -1,0 +1,151 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+<style>
+    table{
+    width: 100%;
+}
+th{
+    background-color: rgb(185, 114, 22);
+    color: black;
+}
+td{
+    color: black;
+    padding-left: 10px;
+    background-color: aliceblue;
+}
+a{
+    color: blue;
+}
+.txt-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}
+
+.rating {
+    width: 90px;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+}
+
+.rating > label {
+    float: right;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 1.1em;
+    cursor: pointer;
+    color: #000;
+}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #0022ff;
+}
+</style>
+<!-- Start Wishlist  -->
+<div class="wishlist-box-main">
+    <div class="container"><br>
+        <h3>payment details</h3><br>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Quantity </th>
+                                <th>Total Price</th>
+                                <th>Date</th>
+                                <th>Card Name</th>
+                                <th>Card Type</th>
+                                <th>Card no</th>
+                                <th>Cvv</th>
+                                <th>User Id</th>
+                                <th>Give Rating</th>
+                                <th>Return</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                               {% for i in result %}
+                                <td class="name-pr">{{i.item_name}}</td>
+                                <td class="price-pr">{{i.quantity}}</td>
+                                <td class="quantity-box">{{i.total_price}}</td>
+                                <td class="quantity-box">{{i.date}}</td>
+                                <td class="quantity-box">{{i.card_name}}</td>
+                                <td class="quantity-box">{{i.card_type}}</td>
+                                <td class="quantity-box">{{i.card_no}}</td>
+                                <td class="quantity-box">{{i.cvv}}</td>
+                                <td class="quantity-box">{{i.user_id}}</td>
+                               
+                                <td><div class="txt-center">
+                                    <form action="rating/{{ i.id }}" method="post">
+                                      {% csrf_token %}
+                                      <div class="rating">
+                                        <input type="text" name="p_name" hidden value="{{ i.item_name }}">
+                                        <input id="star5_{{ i.id }}" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5_{{ i.id }}" >☆</label>
+                                        <input id="star4_{{ i.id }}" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4_{{ i.id }}" >☆</label>
+                                        <input id="star3_{{ i.id }}" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3_{{ i.id }}" >☆</label>
+                                        <input id="star2_{{ i.id }}" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2_{{ i.id }}" >☆</label>
+                                        <input id="star1_{{ i.id }}" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1_{{ i.id }}" >☆</label>
+                                        <div class="clear"></div>
+                                        <input type="submit"class="btn btn-danger" name="submit" id="">
+                                      </div>
+                                    </form>
+                                  </div>
+                                </td>
+                                <td><a href="return_pro/{{i.id}}"class="btn btn-danger">return</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% include 'footer.html' %}
+
+{% endblock %}

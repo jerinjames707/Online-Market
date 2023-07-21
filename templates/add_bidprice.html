@@ -1,0 +1,62 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+<style>
+.a{
+ing
+
+}
+</style>
+ <!-- Contact Start -->
+ <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+      
+        <div class="row g-12">
+		 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
+		 
+                <div class="bg-light rounded p-5">
+                   <img src="../media/{{res.file}}" alt="Image" width="100%" height="auto">
+				   <p><span style="color:#F14D5D">Name:</span><b>{{res.item_name}}</b></p>
+				   <p><span style="color:#F14D5D">Discription:</span><b>{{res.disc}}</b></p>
+                </div>
+            </div>
+            <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
+                <div class="bg-light rounded p-5">
+                    <form action="update/{{ res.id }}" method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <input type="text" id="priceInput" class="form-control border-0 px-4" name="price" required value="{{res.price}}" style="height: 55px;">
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">add amount</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+	<script>
+    let currentPrice = parseInt("{{res.price}}");
+
+    function increasePrice() {
+        const priceInput = document.getElementById('priceInput');
+        const bidValue = parseInt(priceInput.value);
+
+        if (bidValue && bidValue > currentPrice) {
+            currentPrice = bidValue;
+            priceInput.value = currentPrice;
+            console.log('Bid placed successfully. Current price: ' + currentPrice);
+        } else {
+            console.log('Invalid bid. Please enter a valid higher amount.');
+        }
+    }
+</script>
+</div><br><br><br><br>
+<!-- Contact End -->
+
+{% include 'footer.html' %}
+
+{% endblock %}

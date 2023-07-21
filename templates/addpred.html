@@ -1,0 +1,115 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary p-5 hero-header mb-5">
+        <div class="row py-5">
+            <div class="col-12 text-center">
+                <h1 class="display-1 text-white animated zoomIn">Service Booking</h1>
+             
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+                <h5 class="text-primary text-uppercase" style="letter-spacing: 5px;">Service Booking</h5>
+            </div>
+            <div class="row g-12">
+                <div class="col-lg-12 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="bg-light rounded p-5">
+                        <form action="pred" method="post">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <!--div class="col-6">
+                                    <input type="text" class="form-control border-0 px-4" hidden value="{{result.id}}" name="wid" required data-error="Please enter your name" style="height: 55px;">
+                                </div-->
+                                <!-- <div class="col-6">
+                                    <input type="text" class="form-control border-0 px-4" hidden name="uname" required data-error="Please enter your name" style="height: 55px;">
+                                </div> -->
+                                <div class="col-6">
+                                    <label for="centre">Choose a Centre:</label>
+                                    <select name="centre" id="centre">
+                                        {% for i in res.Centre %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="gender">Choose a gender:</label>
+                                    <select name="gender" id="gender">
+                                        {% for i in res.Gender %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="labour_category">Choose a Labour Category:</label>
+                                    <select name="labour_category" id="labour_category">
+                                        {% for i in res.LabourCategory %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="labour_type">Choose a Labour Type:</label>
+                                    <select name="labour_type" id="labour_type">
+                                        {% for i in res.LabourType %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="state">Choose a state:</label>
+                                    <select name="state" id="state">
+                                        {% for i in res.State %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="district">Choose a district:</label>
+                                    <select name="district" id="district">
+                                        {% for i in res.District %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="district">Choose a district:</label>
+                                    <select name="district" id="district">
+                                        {% for i in res.Month %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="district">Choose a district:</label>
+                                    <select name="district" id="district">
+                                        {% for i in res.Year %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" name="submit" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+      
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+{% include 'footer.html' %}
+
+{% endblock %}

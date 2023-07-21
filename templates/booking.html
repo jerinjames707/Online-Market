@@ -1,0 +1,96 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+
+<!-- Start Wishlist  -->
+<div class="wishlist-box-main">
+    <div class="container"><br>
+        <h3> Bookings And Payment Details</h3><br>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <h4>Booking Details</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Work Type </th>
+                                <th>Worker</th>
+                                <th>Place</th>
+                                <th>Date</th>
+                                <th>Issue</th>
+                                <th>Status</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              {% for j in results %}
+                                <td class="name-pr">{{j.uname}}</td>
+                                <td class="price-pr">{{j.typee}}</td>
+                                <td class="quantity-box">{{j.wid}}</td>
+                                <td class="quantity-box">{{j.place}}</td>
+                                <td class="quantity-box">{{j.date}}</td>
+                                <td class="quantity-box">{{j.issue}}</td>
+                                <td class="quantity-box">{{j.status}}</td>
+                               
+                               
+                              
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table><br><br>
+                    <h4>Payment Details</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Work Type </th>
+                                <th>Worker</th>
+                                
+                                <th>Date</th>
+                                <th>Card Number</th>
+                               
+                                <th>Amount Paid</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              {% for i in result %}
+                                <td class="name-pr">{{i.uname}}</td>
+                                <td class="price-pr">{{i.typee}}</td>
+                                <td class="quantity-box">{{i.wid}}</td>
+                               
+                                <td class="quantity-box">{{i.date}}</td>
+                                <td class="quantity-box">{{i.c_num}}</td>
+                               
+                                <td class="quantity-box">{{i.amount}}</td>
+                               
+                              
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% include 'footer.html' %}
+
+{% endblock %}

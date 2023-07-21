@@ -1,0 +1,64 @@
+{% block content %}
+{% load static %}
+
+{% include 'header.html' %}
+
+<!-- Start Wishlist  -->
+<div class="wishlist-box-main">
+    <div class="container"><br>
+        <h3>Seller List</h3><br>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email </th>
+                                <th>Phone</th>
+                                <th>File</th>
+                                <th>Status</th>
+                                <th>Approve</th>
+                                <th>Reject</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              {% for i in result %}
+                                <td class="name-pr">{{i.name}}</td>
+                                <td class="price-pr">{{i.email}}</td>
+                                <td class="quantity-box">{{i.phone}}</td>
+                                <td class="quantity-box"><img src="{{ i.file.url }}" alt="Image" width="200px"></td>
+                                <td class="quantity-box">{{i.status}}</td>
+                                <td class="add-pr">
+                                    <a  href="wapprove/{{i.id}}">Approve</a>
+                                </td>
+                                <td class="remove-pr">
+                                    <a href="wdelete/{{i.id}}"><i ></i>Reject</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% include 'footer.html' %}
+
+{% endblock %}
